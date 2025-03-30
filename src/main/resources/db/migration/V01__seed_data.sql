@@ -27,3 +27,16 @@ insert into PRODUCT (PRODUCT_CODE, COST, STATUS) values ('PRODUCT_002', 100,'Ina
 insert into PRODUCT (PRODUCT_CODE, COST, STATUS) values ('PRODUCT_003', 200,'Active');
 insert into PRODUCT (PRODUCT_CODE, COST, STATUS) values ('PRODUCT_004', 10,'Inactive');
 insert into PRODUCT (PRODUCT_CODE, COST, STATUS) values ('PRODUCT_005', 50,'Active');
+
+create table TRANSACTION(
+  TRANSACTION_ID int not null,
+  TRANSACTION_TIME varchar(50),
+  CUSTOMER_ID varchar(50),
+  QUANTITY int not null,
+  PRODUCT_CODE varchar(50),
+  PRIMARY KEY ( TRANSACTION_ID )
+);
+
+CREATE SEQUENCE transaction_seq
+  START WITH 1
+  INCREMENT BY 1;

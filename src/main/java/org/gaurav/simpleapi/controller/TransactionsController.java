@@ -1,8 +1,8 @@
 package org.gaurav.simpleapi.controller;
 
 import org.gaurav.simpleapi.mapper.EntityMapper;
-import org.gaurav.simpleapi.model.Transaction;
 import org.gaurav.simpleapi.model.dto.RequestDto;
+import org.gaurav.simpleapi.model.entity.Transaction;
 import org.gaurav.simpleapi.service.TransactionServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

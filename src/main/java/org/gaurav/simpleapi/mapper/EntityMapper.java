@@ -1,8 +1,11 @@
 package org.gaurav.simpleapi.mapper;
 
-import org.gaurav.simpleapi.model.Transaction;
-import org.gaurav.simpleapi.model.dto.RequestDto;
 
+import org.gaurav.simpleapi.model.dto.RequestDto;
+import org.gaurav.simpleapi.model.entity.Transaction;
+import org.springframework.stereotype.Component;
+
+@Component
 public class EntityMapper {
 
     public Transaction requestToTransactionMapper(RequestDto requestDto) {

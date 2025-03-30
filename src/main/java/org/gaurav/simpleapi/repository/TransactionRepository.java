@@ -1,6 +1,7 @@
 package org.gaurav.simpleapi.repository;
 
-import org.gaurav.simpleapi.model.Transaction;
+
+import org.gaurav.simpleapi.model.entity.Transaction;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
