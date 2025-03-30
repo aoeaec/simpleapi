@@ -1,0 +1,19 @@
+# Info about the Simple API project
+
+1. It is written in Java using Spring Boot.
+
+Functionality
+
+1. Accept the transactions payload
+2. Validate the input and then perform operation on the payload
+3. Endpoints for reporting, fetches data based on customer id, product code or location.
+
+
+
+Steps to run app
+1. Go to the app folder and run command:: `mvn install`, this will build the jar for the project
+2. Run command to build docker image :: `docker build -t spring-boot .`
+3. If you want to run command from outside the app folder, please change last dor (.) with appropriate folder where you could see Dockerfile for this project
+4. Once the image is built, run ::`docker run -d -p 8080:8080 -t spring-boot `
+
+Postman collection is added in the project as SimpleAPI.postman_collection.json

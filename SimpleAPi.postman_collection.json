@@ -1,0 +1,96 @@
+{
+	"info": {
+		"_postman_id": "76901503-5e8c-4fe6-b6a9-3af6424e5eab",
+		"name": "SimpleAPi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Post Transaction",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"transactionTime\" : \"2018-01-01 14:56\",\n    \"customerId\" : \"10002\",\n    \"quantity\": 5,\n    \"productCode\" : \"PRODUCT_005\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/transactions",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Transactions For a customer",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/transactions/customers/10002",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"transactions",
+						"customers",
+						"10002"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Transactions For a product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/transactions/products/PRODUCT_005",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"transactions",
+						"products",
+						"PRODUCT_005"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Transactions For a location",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/transactions/locations/US",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"transactions",
+						"locations",
+						"US"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

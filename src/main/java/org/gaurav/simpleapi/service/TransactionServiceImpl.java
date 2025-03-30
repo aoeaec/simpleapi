@@ -67,6 +67,7 @@ public class TransactionServiceImpl {
 
     private Transaction convertToEntity(TransactionDto transactionDto){
         Transaction transaction = new Transaction();
+        transaction.setTransactionTime(transactionDto.transactionTime());
         transaction.setCustomerId(transactionDto.customerId());
         transaction.setProductCode(transactionDto.productCode());
         transaction.setQuantity(transactionDto.quantity());

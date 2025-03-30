@@ -6,6 +6,8 @@ import org.gaurav.simpleapi.model.dto.RequestDto;
 import org.gaurav.simpleapi.model.dto.TransactionResponseDto;
 import org.gaurav.simpleapi.service.TransactionServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -15,12 +17,9 @@ public class TransactionsController {
     TransactionServiceImpl transactionService;
 
     @PostMapping("/transactions")
-    public String postTransaction(@RequestBody @Valid RequestDto requestDto) {
-
+    public ResponseEntity<Object> postTransaction(@RequestBody @Valid RequestDto requestDto) {
         transactionService.processTransaction(requestDto);
-
-
-        return "OK";
+        return new ResponseEntity<>("Transaction Successful", HttpStatus.OK);
     }
 
     @GetMapping("/transactions/customers/{customerId}")

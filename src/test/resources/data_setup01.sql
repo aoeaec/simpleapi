@@ -1,0 +1,22 @@
+INSERT INTO "PUBLIC"."TRANSACTION" VALUES
+(1, NULL, '10002', 5, 250, 'PRODUCT_005', 'US'),
+(2, NULL, '10002', 5, 250, 'PRODUCT_004', 'Australia'),
+(3, NULL, '10002', 5, 250, 'PRODUCT_003', 'US'),
+(4, NULL, '10002', 5, 250, 'PRODUCT_002', 'US'),
+(5, NULL, '10002', 5, 250, 'PRODUCT_001', 'Australia'),
+(6, NULL, '10002', 5, 250, 'PRODUCT_005', 'US'),
+(7, NULL, '10002', 5, 250, 'PRODUCT_004', 'Australia');
+
+(8, NULL, '10001', 5, 250, 'PRODUCT_003', 'US'),
+(9, NULL, '10001', 5, 250, 'PRODUCT_002', 'US'),
+(10, NULL, '10001', 5, 250, 'PRODUCT_001', 'Australia'),
+(11, NULL, '10003', 5, 250, 'PRODUCT_005', 'US'),
+(12, NULL, '10003', 5, 250, 'PRODUCT_004', 'Australia'),
+(13, NULL, '10003', 5, 250, 'PRODUCT_003', 'US');
+
+(14, NULL, '10005', 5, 250, 'PRODUCT_002', 'Australia'),
+(15, NULL, '10004', 5, 250, 'PRODUCT_001', 'US'),
+(16, NULL, '10004', 5, 250, 'PRODUCT_005', 'Australia'),
+(17, NULL, '10005', 5, 250, 'PRODUCT_004', 'US'),
+(18, NULL, '10004', 5, 250, 'PRODUCT_003', 'Australia'),
+(19, NULL, '10005', 5, 250, 'PRODUCT_002', 'US');
