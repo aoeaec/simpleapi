@@ -31,7 +31,7 @@ insert into PRODUCT (PRODUCT_CODE, COST, STATUS) values ('PRODUCT_005', 50,'Acti
 create table TRANSACTION(
   TRANSACTION_ID int not null,
   TRANSACTION_TIME varchar(50),
-  CUSTOMER_ID varchar(50),
+  CUSTOMER_ID int,
   QUANTITY int not null,
   COST int not null,
   PRODUCT_CODE varchar(50),

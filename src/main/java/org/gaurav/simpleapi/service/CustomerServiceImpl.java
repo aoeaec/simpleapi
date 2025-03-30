@@ -16,13 +16,13 @@ public class CustomerServiceImpl {
     @Autowired
     CustomerRepository repository;
 
-    public CustomerDto getCustomer(int id) {
+    public Customer getCustomer(int id) {
 
-        Optional<Customer> customer =  repository.findById(id);
-        return customer.map(value -> new CustomerDto(value.getFirstName(),
-                value.getLastName(),
-                value.getEmail(),
-                value.getLocation()))
-                .orElse(null);
+        return repository.findById(id).orElse(null);
+//        return customer.map(value -> new CustomerDto(value.getFirstName(),
+//                value.getLastName(),
+//                value.getEmail(),
+//                value.getLocation()))
+//                .orElse(null);
     }
 }

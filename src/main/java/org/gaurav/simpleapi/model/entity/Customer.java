@@ -1,14 +1,14 @@
 package org.gaurav.simpleapi.model.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.io.Serializable;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
+@Table(name = "CUSTOMER")
 @Entity
-public class Customer {
+public class Customer implements Serializable {
 
     @Id
     @GeneratedValue(strategy = IDENTITY)

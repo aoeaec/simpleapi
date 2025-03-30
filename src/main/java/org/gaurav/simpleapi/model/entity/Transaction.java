@@ -2,9 +2,12 @@ package org.gaurav.simpleapi.model.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
+import lombok.Getter;
+import lombok.Setter;
 import org.gaurav.simpleapi.model.StatusType;
 import org.gaurav.simpleapi.validation.ActiveEnumValidation;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
@@ -12,7 +15,9 @@ import java.util.Objects;
         name = "sequenceId_generator",
         sequenceName = "transaction_seq", allocationSize = 1)
 @Entity
-public final class Transaction {
+@Getter
+@Setter
+public final class Transaction  implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceId_generator")
@@ -20,7 +25,10 @@ public final class Transaction {
 
 
     private Date transactionTime;
-    private Integer customerId;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "CUSTOMER_ID", referencedColumnName = "CUSTOMER_ID")
+    private Customer customer;
     private Integer quantity;
     private String productCode;
 
@@ -30,6 +38,14 @@ public final class Transaction {
     @Transient
     @ActiveEnumValidation(message = "Product must be active")
     private StatusType productStatus;
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 
     public int getTransactionId() {
         return TransactionId;
@@ -45,14 +61,6 @@ public final class Transaction {
 
     public void setTransactionTime(Date transactionTime) {
         this.transactionTime = transactionTime;
-    }
-
-    public Integer getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(Integer customerId) {
-        this.customerId = customerId;
     }
 
     public Integer getQuantity() {

@@ -4,8 +4,10 @@ package org.gaurav.simpleapi.model.entity;
 import jakarta.persistence.*;
 import org.gaurav.simpleapi.model.StatusType;
 
+import java.io.Serializable;
+
 @Entity
-public class Product {
+public class Product implements Serializable {
 @Id
 @Column(name = "PRODUCT_CODE")
     String productCode;
