@@ -6,4 +6,5 @@ public record TransactionDto(Date transactionTime,
                              Integer customerId,
                              Integer quantity,
                              String productCode,
-                             Integer cost) { }
+                             Integer cost,
+                             String location) { }

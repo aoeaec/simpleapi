@@ -35,7 +35,8 @@ public class TransactionServiceImpl {
                 requestDto.getCustomerId(),
                 requestDto.getQuantity(),
                 requestDto.getProductCode(),
-                product.cost()*requestDto.getQuantity() );
+                product.cost()*requestDto.getQuantity(),
+                customer.location());
         Transaction transaction = convertToEntity(transactionDto);
         transaction.setProductStatus(product.statusType());
         transactionRepository.save(transaction);
@@ -70,6 +71,7 @@ public class TransactionServiceImpl {
         transaction.setProductCode(transactionDto.productCode());
         transaction.setQuantity(transactionDto.quantity());
         transaction.setCost(transactionDto.cost());
+        transaction.setLocation(transactionDto.location());
 
         return transaction;
     }
@@ -79,7 +81,8 @@ public class TransactionServiceImpl {
                 transaction.getCustomerId(),
                 transaction.getQuantity(),
                 transaction.getProductCode(),
-                transaction.getCost());
+                transaction.getCost(),
+                transaction.getLocation());
     }
 
 

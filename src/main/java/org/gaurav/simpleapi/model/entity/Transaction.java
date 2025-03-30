@@ -27,6 +27,8 @@ public final class Transaction {
     @Max(value = 5000, message = "Total cost of transaction must not exceed 5000")
     private Integer cost;
 
+    private String location;
+
     @Transient
     @ActiveEnumValidation(message = "Product must be active")
     private StatusType productStatus;
@@ -81,6 +83,14 @@ public final class Transaction {
 
     public StatusType getProductStatus() {
         return productStatus;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public void setProductStatus(StatusType productStatus) {

@@ -35,6 +35,7 @@ create table TRANSACTION(
   QUANTITY int not null,
   COST int not null,
   PRODUCT_CODE varchar(50),
+  LOCATION varchar(100),
   PRIMARY KEY ( TRANSACTION_ID )
 );
 
