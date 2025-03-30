@@ -1,5 +1,6 @@
 package org.gaurav.simpleapi.controller;
 
+import jakarta.validation.Valid;
 import org.gaurav.simpleapi.mapper.EntityMapper;
 import org.gaurav.simpleapi.model.dto.RequestDto;
 import org.gaurav.simpleapi.model.entity.Transaction;
@@ -19,7 +20,7 @@ public class TransactionsController {
     EntityMapper mapper;
 
     @PostMapping("/transactions")
-    public String postTransaction(@RequestBody RequestDto requestDto) {
+    public String postTransaction(@RequestBody @Valid RequestDto requestDto) {
         Transaction transaction = mapper.requestToTransactionMapper(requestDto);
 
         transactionService.processTransaction(transaction);
@@ -27,4 +28,6 @@ public class TransactionsController {
 
         return "OK";
     }
+
+
 }

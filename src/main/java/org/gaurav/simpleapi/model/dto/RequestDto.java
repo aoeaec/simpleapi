@@ -1,24 +1,29 @@
 package org.gaurav.simpleapi.model.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import org.gaurav.simpleapi.validation.DateValidation;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Data
 public class RequestDto {
 
-    String transactionTime;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
+    @DateValidation(message = "Date cannot be in future")
+    Date transactionTime;
     Integer customerId;
     Integer quantity;
     String productCode;
 
-    public String getTransactionTime() {
+    public Date getTransactionTime() {
         return transactionTime;
     }
 
-    public void setTransactionTime(String transactionTime) {
+    public void setTransactionTime(Date transactionTime) {
         this.transactionTime = transactionTime;
     }
 
