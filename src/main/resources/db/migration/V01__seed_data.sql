@@ -33,6 +33,7 @@ create table TRANSACTION(
   TRANSACTION_TIME varchar(50),
   CUSTOMER_ID varchar(50),
   QUANTITY int not null,
+  COST int not null,
   PRODUCT_CODE varchar(50),
   PRIMARY KEY ( TRANSACTION_ID )
 );

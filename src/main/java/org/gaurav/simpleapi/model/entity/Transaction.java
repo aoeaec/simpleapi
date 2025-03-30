@@ -1,14 +1,10 @@
 package org.gaurav.simpleapi.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
-import jakarta.validation.Valid;
-import jakarta.validation.constraints.DecimalMax;
 import jakarta.validation.constraints.Max;
 import org.gaurav.simpleapi.model.StatusType;
 import org.gaurav.simpleapi.validation.ActiveEnumValidation;
 
-import java.time.LocalDate;
 import java.util.Date;
 import java.util.Objects;
 
@@ -22,70 +18,57 @@ public final class Transaction {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceId_generator")
     private int TransactionId;
 
+
+    private Date transactionTime;
+    private Integer customerId;
+    private Integer quantity;
+    private String productCode;
+
+    @Max(value = 5000, message = "Total cost of transaction must not exceed 5000")
+    private Integer cost;
+
+    @Transient
+    @ActiveEnumValidation(message = "Product must be active")
+    private StatusType productStatus;
+
+    public int getTransactionId() {
+        return TransactionId;
+    }
+
+    public void setTransactionId(int transactionId) {
+        TransactionId = transactionId;
+    }
+
     public Date getTransactionTime() {
         return transactionTime;
+    }
+
+    public void setTransactionTime(Date transactionTime) {
+        this.transactionTime = transactionTime;
     }
 
     public Integer getCustomerId() {
         return customerId;
     }
 
+    public void setCustomerId(Integer customerId) {
+        this.customerId = customerId;
+    }
+
     public Integer getQuantity() {
         return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
     public String getProductCode() {
         return productCode;
     }
 
-    private final Date transactionTime;
-    private final Integer customerId;
-    private final Integer quantity;
-    private final String productCode;
-
-    @Transient
-    @Max(value = 300, message = "Cost cannot be more than 300")
-    private Integer cost;
-
-    @Transient
-   @ActiveEnumValidation(message = "Only Active enum allowed")
-    private StatusType statusType;
-
-    public Transaction(Date transactionTime,
-                       Integer customerId,
-                       Integer quantity,
-                       String productCode) {
-        this.transactionTime = transactionTime;
-        this.customerId = customerId;
-        this.quantity = quantity;
+    public void setProductCode(String productCode) {
         this.productCode = productCode;
-    }
-
-
-
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == this) return true;
-        if (obj == null || obj.getClass() != this.getClass()) return false;
-        var that = (Transaction) obj;
-        return Objects.equals(this.transactionTime, that.transactionTime) &&
-                Objects.equals(this.customerId, that.customerId) &&
-                Objects.equals(this.quantity, that.quantity) &&
-                Objects.equals(this.productCode, that.productCode);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(transactionTime, customerId, quantity, productCode);
-    }
-
-    @Override
-    public String toString() {
-        return "Transaction[" +
-                "transactionTime=" + transactionTime + ", " +
-                "customerId=" + customerId + ", " +
-                "quantity=" + quantity + ", " +
-                "productCode=" + productCode + ']';
     }
 
     public Integer getCost() {
@@ -96,11 +79,11 @@ public final class Transaction {
         this.cost = cost;
     }
 
-    public StatusType getStatusType() {
-        return statusType;
+    public StatusType getProductStatus() {
+        return productStatus;
     }
 
-    public void setStatusType(StatusType statusType) {
-        this.statusType = statusType;
+    public void setProductStatus(StatusType productStatus) {
+        this.productStatus = productStatus;
     }
 }
