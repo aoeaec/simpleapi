@@ -42,7 +42,7 @@ class TransactionsControllerTest {
     @Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = {"/delete_transactions_table.sql"})
     void shouldReturnDefaultMessageForTransactionsByCustomerId() throws Exception {
         this.mockMvc.perform(get("/transactions/customers/10002")).andDo(print()).andExpect(status().isOk())
-                .andExpect(content().string(containsString("{\"totalCost\":0}")));
+                .andExpect(content().string(containsString("{\"message\":\"No records found\"}")));
     }
 
     @Test
@@ -50,7 +50,7 @@ class TransactionsControllerTest {
     @Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = {"/delete_transactions_table.sql"})
     void shouldReturnDefaultMessageForTransactionsByProductId() throws Exception {
         this.mockMvc.perform(get("/transactions/products/PRODUCT_001")).andDo(print()).andExpect(status().isOk())
-                .andExpect(content().string(containsString("{\"totalCost\":0}")));
+                .andExpect(content().string(containsString("{\"message\":\"No records found\"}")));
     }
 
     @Test
@@ -58,7 +58,7 @@ class TransactionsControllerTest {
     @Sql(executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD, scripts = {"/delete_transactions_table.sql"})
     void shouldReturnDefaultMessageForTransactionsByLocation() throws Exception {
         this.mockMvc.perform(get("/transactions/locations/Australia")).andDo(print()).andExpect(status().isOk())
-                .andExpect(content().string(containsString("{\"totalCost\":0}")));
+                .andExpect(content().string(containsString("{\"message\":\"No records found\"}")));
     }
 
 
@@ -68,7 +68,7 @@ class TransactionsControllerTest {
     @Sql(executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD, scripts = {"/delete_transactions_table.sql"})
     void shouldReturnDefaultMessageForTransactionsByLocation1() throws Exception {
         this.mockMvc.perform(get("/transactions/locations/Australia")).andDo(print()).andExpect(status().isOk())
-                .andExpect(content().string("{\"totalCost\":2000,\"transactionsList\":[{\"transactionTime\":\"2018-01-01T14:56:00.000+00:00\",\"customerId\":10002,\"quantity\":5,\"productCode\":\"PRODUCT_004\",\"cost\":250,\"location\":\"Australia\"},{\"transactionTime\":\"2018-01-01T14:56:00.000+00:00\",\"customerId\":10002,\"quantity\":5,\"productCode\":\"PRODUCT_001\",\"cost\":250,\"location\":\"Australia\"},{\"transactionTime\":\"2018-01-01T14:56:00.000+00:00\",\"customerId\":10002,\"quantity\":5,\"productCode\":\"PRODUCT_004\",\"cost\":250,\"location\":\"Australia\"},{\"transactionTime\":\"2018-01-01T14:56:00.000+00:00\",\"customerId\":10001,\"quantity\":5,\"productCode\":\"PRODUCT_001\",\"cost\":250,\"location\":\"Australia\"},{\"transactionTime\":\"2018-01-01T14:56:00.000+00:00\",\"customerId\":10003,\"quantity\":5,\"productCode\":\"PRODUCT_004\",\"cost\":250,\"location\":\"Australia\"},{\"transactionTime\":\"2018-01-01T14:56:00.000+00:00\",\"customerId\":10005,\"quantity\":5,\"productCode\":\"PRODUCT_002\",\"cost\":250,\"location\":\"Australia\"},{\"transactionTime\":\"2018-01-01T14:56:00.000+00:00\",\"customerId\":10004,\"quantity\":5,\"productCode\":\"PRODUCT_005\",\"cost\":250,\"location\":\"Australia\"},{\"transactionTime\":\"2018-01-01T14:56:00.000+00:00\",\"customerId\":10004,\"quantity\":5,\"productCode\":\"PRODUCT_003\",\"cost\":250,\"location\":\"Australia\"}]}"));
+                .andExpect(content().string("{\"totalCount\":8,\"transactionsList\":[{\"transactionTime\":\"2018-01-01T14:56:00.000+00:00\",\"customerId\":10002,\"quantity\":5,\"productCode\":\"PRODUCT_004\",\"cost\":250,\"location\":\"Australia\"},{\"transactionTime\":\"2018-01-01T14:56:00.000+00:00\",\"customerId\":10002,\"quantity\":5,\"productCode\":\"PRODUCT_001\",\"cost\":250,\"location\":\"Australia\"},{\"transactionTime\":\"2018-01-01T14:56:00.000+00:00\",\"customerId\":10002,\"quantity\":5,\"productCode\":\"PRODUCT_004\",\"cost\":250,\"location\":\"Australia\"},{\"transactionTime\":\"2018-01-01T14:56:00.000+00:00\",\"customerId\":10001,\"quantity\":5,\"productCode\":\"PRODUCT_001\",\"cost\":250,\"location\":\"Australia\"},{\"transactionTime\":\"2018-01-01T14:56:00.000+00:00\",\"customerId\":10003,\"quantity\":5,\"productCode\":\"PRODUCT_004\",\"cost\":250,\"location\":\"Australia\"},{\"transactionTime\":\"2018-01-01T14:56:00.000+00:00\",\"customerId\":10005,\"quantity\":5,\"productCode\":\"PRODUCT_002\",\"cost\":250,\"location\":\"Australia\"},{\"transactionTime\":\"2018-01-01T14:56:00.000+00:00\",\"customerId\":10004,\"quantity\":5,\"productCode\":\"PRODUCT_005\",\"cost\":250,\"location\":\"Australia\"},{\"transactionTime\":\"2018-01-01T14:56:00.000+00:00\",\"customerId\":10004,\"quantity\":5,\"productCode\":\"PRODUCT_003\",\"cost\":250,\"location\":\"Australia\"}]}"));
     }
 
 

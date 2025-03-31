@@ -112,7 +112,7 @@ class TransactionServiceImplTest {
         when(transactionRepository.findByLocation("location")).thenReturn( transations.stream().filter(transaction -> transaction.getLocation().equals("Australia")).collect(Collectors.toList()));
         TransactionResponseDto transactionResponseDto = transactionService.getTransactionsForLocation("location");
         assertEquals(transactionResponseDto.getTransactionsList().size(), 10);
-        assertEquals(transactionResponseDto.getTotalCost(), 689);
+        assertEquals(transactionResponseDto.getTotalCount(), 10);
     }
 
 

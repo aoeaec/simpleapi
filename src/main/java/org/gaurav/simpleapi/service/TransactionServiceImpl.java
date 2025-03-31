@@ -50,25 +50,38 @@ public class TransactionServiceImpl implements TransactionService {
     @Override
     public TransactionResponseDto getTransactionsForCustomerId(Integer customerId) {
         List<Transaction> transactions = transactionRepository.findByCustomerId(customerId);
-        return getTransactionResponseDto(transactions);
+        return getTransactionResponseDtoWithCost(transactions);
     }
 
     @Override
     public TransactionResponseDto getTransactionsForProductCode(String productCode) {
         List<Transaction> transactions = transactionRepository.findByProductCode(productCode);
-        return getTransactionResponseDto(transactions);
+        return getTransactionResponseDtoWithCost(transactions);
     }
 
     @Override
     public TransactionResponseDto getTransactionsForLocation(String location) {
         List<Transaction> transactions = transactionRepository.findByLocation(location);
-        return getTransactionResponseDto(transactions);
+        TransactionResponseDto transactionResponseDto =  getTransactionResponseDtoWithCount(transactions);
+        transactionResponseDto.setTotalCount(transactionResponseDto.getTransactionsList().size());
+        return transactionResponseDto;
+    }
+
+    private TransactionResponseDto getTransactionResponseDtoWithCost(List<Transaction> transactions) {
+        TransactionResponseDto transactionResponseDto = getTransactionResponseDto(transactions);
+        transactionResponseDto.setTotalCost(transactionResponseDto.getTransactionsList().stream().mapToInt(TransactionDto::cost).sum());
+        return transactionResponseDto;
+    }
+
+    private TransactionResponseDto getTransactionResponseDtoWithCount(List<Transaction> transactions) {
+        TransactionResponseDto transactionResponseDto = getTransactionResponseDto(transactions);
+        transactionResponseDto.setTotalCount(transactionResponseDto.getTransactionsList().size());
+        return transactionResponseDto;
     }
 
     private TransactionResponseDto getTransactionResponseDto(List<Transaction> transactions) {
         TransactionResponseDto transactionResponseDto = new TransactionResponseDto();
         transactions.forEach(transaction -> transactionResponseDto.getTransactionsList().add(convertToDto(transaction)));
-        transactionResponseDto.setTotalCost(transactionResponseDto.getTransactionsList().stream().mapToInt(TransactionDto::cost).sum());
         return transactionResponseDto;
     }
 
