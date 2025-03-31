@@ -1,7 +1,7 @@
 # Info about the Simple API project
 
 1. It is written in Java 17 using Spring Boot.
-2. H2 database is used and can be accessed by opening url:: http://localhost:8080/h2-console/ . following configs are required
+2. H2 database is used and can be accessed by opening url ( one the app is running):: http://localhost:8080/h2-console/ . following configs are required
     - JDBC Url : jdbc:h2:mem:dcbapp
     - username : sa
     - password : password
