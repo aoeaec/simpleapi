@@ -9,10 +9,11 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class ProductServiceImpl {
+public class ProductServiceImpl implements ProductService {
     @Autowired
     ProductRepository repository;
 
+    @Override
     public ProductDto getProduct(String id) {
         Optional<Product> product =  repository.findById(id);
         return product.map(value -> new ProductDto(value.getProductCode()

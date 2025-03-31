@@ -10,8 +10,8 @@ spring:
     password: password
     jpa:
       spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
-  ldap:
-    embedded:
-      ldif: classpath:localServer.ldif
-      base-dn: dc=gaurav,dc=org
-      port: 8389
+#  ldap:
+#    embedded:
+#      ldif: classpath:localServer.ldif
+#      base-dn: dc=gaurav,dc=org
+#      port: 8389

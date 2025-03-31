@@ -12,16 +12,17 @@ import java.util.List;
 import java.util.Objects;
 
 @Service
-public class TransactionServiceImpl {
+public class TransactionServiceImpl implements TransactionService {
 
     @Autowired
     TransactionRepository transactionRepository;
 
     @Autowired
-    CustomerServiceImpl customerService;
+    CustomerService customerService;
 
     @Autowired
-    ProductServiceImpl productService;
+    ProductService productService;
+    @Override
     public void processTransaction(RequestDto requestDto){
 
         CustomerDto customer = customerService.getCustomer(requestDto.getCustomerId());
@@ -42,16 +43,19 @@ public class TransactionServiceImpl {
         transactionRepository.save(transaction);
     }
 
+    @Override
     public TransactionResponseDto getTransactionsForCustomerId(Integer customerId) {
         List<Transaction> transactions = transactionRepository.findByCustomerId(customerId);
         return getTransactionResponseDto(transactions);
     }
 
+    @Override
     public TransactionResponseDto getTransactionsForProductId(String productCode) {
         List<Transaction> transactions = transactionRepository.findByProductCode(productCode);
         return getTransactionResponseDto(transactions);
     }
 
+    @Override
     public TransactionResponseDto getTransactionsForLocation(String location) {
         List<Transaction> transactions = transactionRepository.findByLocation(location);
         return getTransactionResponseDto(transactions);

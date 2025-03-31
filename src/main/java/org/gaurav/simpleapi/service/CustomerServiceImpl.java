@@ -10,11 +10,12 @@ import java.util.Optional;
 
 
 @Service
-public class CustomerServiceImpl {
+public class CustomerServiceImpl implements CustomerService {
 
     @Autowired
     CustomerRepository repository;
 
+    @Override
     public CustomerDto getCustomer(int id) {
 
         Optional<Customer> customer =  repository.findById(id);

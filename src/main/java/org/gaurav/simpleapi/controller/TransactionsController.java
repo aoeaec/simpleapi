@@ -4,7 +4,7 @@ import jakarta.annotation.Nonnull;
 import jakarta.validation.Valid;
 import org.gaurav.simpleapi.model.dto.RequestDto;
 import org.gaurav.simpleapi.model.dto.TransactionResponseDto;
-import org.gaurav.simpleapi.service.TransactionServiceImpl;
+import org.gaurav.simpleapi.service.TransactionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 public class TransactionsController {
 
     @Autowired
-    TransactionServiceImpl transactionService;
+    TransactionService transactionService;
 
     @PostMapping("/transactions")
     public ResponseEntity<Object> postTransaction(@RequestBody @Valid RequestDto requestDto) {
