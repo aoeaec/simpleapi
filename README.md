@@ -37,19 +37,25 @@ Task 1 :
  - Data needs to be stored in the database for reporting - We are using in memory H2 database
 
 Task 2 : 
- - Date must not be in the past 
- - Total cost of transaction must not exceed 5000
- - Product must be active
+ - Date must not be in the past - API return message "Date cannot be in past", with HTTP Status 400
+ - Total cost of transaction must not exceed 5000 - API return message "Total cost of transaction must not exceed 5000" , with HTTP Status 400
+ - Product must be active - API returns message "Product must be active" , with HTTP Status 400
+
+** In addition to these checks, API also checks that the CUSTOMER_ID and PRODUCT_CODE are valid. **
 
 Task 3 : 
- - Total cost of transactions per customer 
- - Total cost of transactions per product
- - Number of transactions sold to customer from Australia
+ - Total cost of transactions per customer - total cost is returned along with list of transactions
+ - Total cost of transactions per product - total cost is returned along with list of transactions
+ - Number of transactions sold to customer from Australia - total count is returned along with list of transactions
 
 Task 4 : 
- - Add security to webservice
+ - Add security to webservice 
+ - Following credentials are needed to access the application . This is also configured in the postman collection.
+      - Username : user
+      - Password : password
 
 
 Next steps :
-LDAP is also configured and can be used with the application by making small change to SecurityConfig class.
-At the moment LDAP will pass sessionid as cookie. Need to pass it as JWT for better API experience
+1. LDAP is also configured and can be used with the application by making small change to SecurityConfig class.
+At the moment LDAP will pass sessionid as cookie. Need to pass it as JWT for better API experience.
+2. Pagination will be good if too many records returned from GET endpoints.

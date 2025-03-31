@@ -68,14 +68,14 @@ class TransactionsControllerTest {
     @Sql(executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD, scripts = {"/delete_transactions_table.sql"})
     void shouldReturnDefaultMessageForTransactionsByLocation1() throws Exception {
         this.mockMvc.perform(get("/transactions/locations/Australia")).andDo(print()).andExpect(status().isOk())
-                .andExpect(content().string("{\"totalCount\":8,\"transactionsList\":[{\"transactionTime\":\"2018-01-01T14:56:00.000+00:00\",\"customerId\":10002,\"quantity\":5,\"productCode\":\"PRODUCT_004\",\"cost\":250,\"location\":\"Australia\"},{\"transactionTime\":\"2018-01-01T14:56:00.000+00:00\",\"customerId\":10002,\"quantity\":5,\"productCode\":\"PRODUCT_001\",\"cost\":250,\"location\":\"Australia\"},{\"transactionTime\":\"2018-01-01T14:56:00.000+00:00\",\"customerId\":10002,\"quantity\":5,\"productCode\":\"PRODUCT_004\",\"cost\":250,\"location\":\"Australia\"},{\"transactionTime\":\"2018-01-01T14:56:00.000+00:00\",\"customerId\":10001,\"quantity\":5,\"productCode\":\"PRODUCT_001\",\"cost\":250,\"location\":\"Australia\"},{\"transactionTime\":\"2018-01-01T14:56:00.000+00:00\",\"customerId\":10003,\"quantity\":5,\"productCode\":\"PRODUCT_004\",\"cost\":250,\"location\":\"Australia\"},{\"transactionTime\":\"2018-01-01T14:56:00.000+00:00\",\"customerId\":10005,\"quantity\":5,\"productCode\":\"PRODUCT_002\",\"cost\":250,\"location\":\"Australia\"},{\"transactionTime\":\"2018-01-01T14:56:00.000+00:00\",\"customerId\":10004,\"quantity\":5,\"productCode\":\"PRODUCT_005\",\"cost\":250,\"location\":\"Australia\"},{\"transactionTime\":\"2018-01-01T14:56:00.000+00:00\",\"customerId\":10004,\"quantity\":5,\"productCode\":\"PRODUCT_003\",\"cost\":250,\"location\":\"Australia\"}]}"));
+                .andExpect(content().string("{\"totalCount\":8,\"transactionsList\":[{\"transactionTime\":\"2058-01-01T14:56:00.000+00:00\",\"customerId\":10002,\"quantity\":5,\"productCode\":\"PRODUCT_004\",\"cost\":250,\"location\":\"Australia\"},{\"transactionTime\":\"2058-01-01T14:56:00.000+00:00\",\"customerId\":10002,\"quantity\":5,\"productCode\":\"PRODUCT_001\",\"cost\":250,\"location\":\"Australia\"},{\"transactionTime\":\"2058-01-01T14:56:00.000+00:00\",\"customerId\":10002,\"quantity\":5,\"productCode\":\"PRODUCT_004\",\"cost\":250,\"location\":\"Australia\"},{\"transactionTime\":\"2058-01-01T14:56:00.000+00:00\",\"customerId\":10001,\"quantity\":5,\"productCode\":\"PRODUCT_001\",\"cost\":250,\"location\":\"Australia\"},{\"transactionTime\":\"2058-01-01T14:56:00.000+00:00\",\"customerId\":10003,\"quantity\":5,\"productCode\":\"PRODUCT_004\",\"cost\":250,\"location\":\"Australia\"},{\"transactionTime\":\"2058-01-01T14:56:00.000+00:00\",\"customerId\":10005,\"quantity\":5,\"productCode\":\"PRODUCT_002\",\"cost\":250,\"location\":\"Australia\"},{\"transactionTime\":\"2058-01-01T14:56:00.000+00:00\",\"customerId\":10004,\"quantity\":5,\"productCode\":\"PRODUCT_005\",\"cost\":250,\"location\":\"Australia\"},{\"transactionTime\":\"2058-01-01T14:56:00.000+00:00\",\"customerId\":10004,\"quantity\":5,\"productCode\":\"PRODUCT_003\",\"cost\":250,\"location\":\"Australia\"}]}"));
     }
 
 
     @Test
     public void createTransaction() throws Exception {
         RequestDto requestDto = new RequestDto();
-        requestDto.setTransactionTime(getDate("11-11-2012 12:24"));
+        requestDto.setTransactionTime(getDate("11-11-2052 12:24"));
         requestDto.setProductCode("PRODUCT_001");
         requestDto.setCustomerId(10001);
         requestDto.setQuantity(4);
@@ -92,7 +92,7 @@ class TransactionsControllerTest {
     @Test
     public void createTransaction_failIncorrectProductCode() throws Exception {
         RequestDto requestDto = new RequestDto();
-        requestDto.setTransactionTime(getDate("11-11-2012 12:24"));
+        requestDto.setTransactionTime(getDate("11-11-2050 12:24"));
         requestDto.setProductCode("PRODUCT_1001");
         requestDto.setCustomerId(10001);
         requestDto.setQuantity(4);
@@ -108,7 +108,7 @@ class TransactionsControllerTest {
     @Test
     public void createTransaction_failIncorrectCustomerId() throws Exception {
         RequestDto requestDto = new RequestDto();
-        requestDto.setTransactionTime(getDate("11-11-2012 12:24"));
+        requestDto.setTransactionTime(getDate("11-11-2052 12:24"));
         requestDto.setProductCode("PRODUCT_001");
         requestDto.setCustomerId(1000);
         requestDto.setQuantity(4);
@@ -122,9 +122,9 @@ class TransactionsControllerTest {
     }
 
     @Test
-    public void createTransaction_failFutureDate() throws Exception {
+    public void createTransaction_failPastDate() throws Exception {
         RequestDto requestDto = new RequestDto();
-        requestDto.setTransactionTime(getDate("11-11-2055 12:24"));
+        requestDto.setTransactionTime(getDate("11-11-2023 12:24"));
         requestDto.setProductCode("PRODUCT_001");
         requestDto.setCustomerId(10001);
         requestDto.setQuantity(4);
@@ -158,7 +158,7 @@ class TransactionsControllerTest {
     @Test
     public void createTransaction_failtotalCostMoreThan5000() throws Exception {
         RequestDto requestDto = new RequestDto();
-        requestDto.setTransactionTime(getDate("11-11-2023 12:24"));
+        requestDto.setTransactionTime(getDate("11-11-2029 12:24"));
         requestDto.setProductCode("PRODUCT_001");
         requestDto.setCustomerId(10001);
         requestDto.setQuantity(500);

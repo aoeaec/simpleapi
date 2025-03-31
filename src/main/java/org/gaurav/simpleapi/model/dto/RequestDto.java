@@ -11,7 +11,7 @@ import java.util.Date;
 public class RequestDto {
 
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm")
-    @DateValidation(message = "Date cannot be in future")
+    @DateValidation(message = "Date cannot be in past")
     Date transactionTime;
     Integer customerId;
     Integer quantity;

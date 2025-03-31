@@ -30,9 +30,8 @@ class DateValidatorTest {
 
     private static Stream<Arguments> getDateValidatorInput() {
         return Stream.of(
-                Arguments.of(getDate("11-11-2012 12:24"), true),
-                Arguments.of(getDate("11-11-2029 12:24"), false), //future date hardcoded
-                Arguments.of(new Date(), true)
+                Arguments.of(getDate("11-11-2052 12:24"), true),
+                Arguments.of(getDate("11-11-2019 12:24"), false)
         );
     }
     private static Date getDate(String inputString) {

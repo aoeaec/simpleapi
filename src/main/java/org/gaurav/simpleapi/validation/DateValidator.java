@@ -8,6 +8,6 @@ import java.util.Date;
 public class DateValidator implements ConstraintValidator<DateValidation, Date>
 {
     public boolean isValid(Date date, ConstraintValidatorContext cxt) {
-        return !date.after(new Date());
+        return date.after(new Date());
     }
 }
