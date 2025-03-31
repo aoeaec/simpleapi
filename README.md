@@ -17,3 +17,30 @@ Steps to run app
 4. Once the image is built, run ::`docker run -d -p 8080:8080 -t spring-boot `
 
 Postman collection is added in the project as SimpleAPI.postman_collection.json
+
+Following credentials are needed to access the application
+Username : user
+Password : password
+The postman collection has Authorisation header attached. 
+
+LDAP is also configured and can be used with the application by making small change to SecurityConfig class.
+
+
+Tasks Covered
+
+Task 1 :
+ - Accepting large amount of transactions per second - The response time for saving transaction is less than 100 ms
+ - Data needs to be stored in the database for reporting - We are using in memory H2 database
+
+Task 2 : 
+ - Date must not be in the past 
+ - Total cost of transaction must not exceed 5000
+ - Product must be active
+
+Task 3 : 
+ - Total cost of transactions per customer 
+ - Total cost of transactions per product
+ - Number of transactions sold to customer from Australia
+
+Task 4 : 
+ - Add security to webservice
