@@ -5,6 +5,8 @@ import jakarta.validation.ValidationException;
 import org.gaurav.simpleapi.model.dto.*;
 import org.gaurav.simpleapi.model.entity.Transaction;
 import org.gaurav.simpleapi.repository.TransactionRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,7 @@ import java.util.Objects;
 @Service
 public class TransactionServiceImpl implements TransactionService {
 
+    Logger log = LoggerFactory.getLogger(TransactionServiceImpl.class);
     @Autowired
     TransactionRepository transactionRepository;
 
@@ -29,6 +32,7 @@ public class TransactionServiceImpl implements TransactionService {
         ProductDto product = productService.getProduct(requestDto.getProductCode());
 
         if (Objects.isNull(customer) || Objects.isNull(product)) {
+            log.error("Invalid Customer or Product code");
             throw new ValidationException("Invalid Customer or Product code");
         }
 

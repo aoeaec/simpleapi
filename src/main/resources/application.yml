@@ -10,6 +10,10 @@ spring:
     password: password
     jpa:
       spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+logging:
+  level:
+    root: INFO
+    org.hibernate.SQL: DEBUG
 #  ldap:
 #    embedded:
 #      ldif: classpath:localServer.ldif
