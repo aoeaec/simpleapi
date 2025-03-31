@@ -1,6 +1,11 @@
 # Info about the Simple API project
 
 1. It is written in Java 17 using Spring Boot.
+2. H2 database is used and can be accessed by opening url:: http://localhost:8080/h2-console/ . following configs are required
+    - JDBC Url : jdbc:h2:mem:dcbapp
+    - username : sa
+    - password : password
+
 
 **Functionality**
 
@@ -22,7 +27,7 @@ To run the application :
 
 Postman collection is added in the project as SimpleAPI.postman_collection.json
 
-Following credentials are needed to access the application
+Following credentials are needed to access the application, use them in Basic Auth (in Postman)
 - Username : user
 - Password : password
 
