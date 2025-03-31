@@ -36,7 +36,7 @@ class DateValidatorTest {
         );
     }
     private static Date getDate(String inputString) {
-        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        DateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy hh:mm");
         Date inputDate;
         try {
             inputDate = dateFormat.parse(inputString);

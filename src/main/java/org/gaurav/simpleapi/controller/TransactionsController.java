@@ -23,7 +23,7 @@ public class TransactionsController {
     @PostMapping("/transactions")
     public ResponseEntity<Object> postTransaction(@RequestBody @Valid RequestDto requestDto) {
         transactionService.processTransaction(requestDto);
-        return new ResponseEntity<>("Transaction Successful", HttpStatus.OK);
+        return new ResponseEntity<>("Transaction Successful", HttpStatus.CREATED);
     }
 
     @GetMapping("/transactions/customers/{customerId}")
