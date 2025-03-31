@@ -50,7 +50,7 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
     @Override
-    public TransactionResponseDto getTransactionsForProductId(String productCode) {
+    public TransactionResponseDto getTransactionsForProductCode(String productCode) {
         List<Transaction> transactions = transactionRepository.findByProductCode(productCode);
         return getTransactionResponseDto(transactions);
     }

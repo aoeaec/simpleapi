@@ -8,7 +8,7 @@ public interface TransactionService {
 
     TransactionResponseDto getTransactionsForCustomerId(Integer customerId);
 
-    TransactionResponseDto getTransactionsForProductId(String productCode);
+    TransactionResponseDto getTransactionsForProductCode(String productCode);
 
     TransactionResponseDto getTransactionsForLocation(String location);
 }
